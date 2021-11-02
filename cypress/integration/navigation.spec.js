@@ -1,5 +1,5 @@
 let movies;
-const movieId =  335983; // The movie Venom id
+const movieId = 335983; // The movie Venom id
 let reviews;
 
 describe("Navigation", () => {
@@ -27,7 +27,7 @@ describe("Navigation", () => {
   });
   beforeEach(() => {
     cy.visit("/");
-  });  
+  });
   describe("From the home page", () => {
     it("should navigate to the movie details page and change browser URL", () => {
       cy.get(".MuiCardActions-root").eq(0).contains("More Info").click();
@@ -82,20 +82,20 @@ describe("Navigation", () => {
       cy.url().should("include", `/movies/${movies[0].id}`);
       cy.get("h3").contains(movies[0].title);
     });
-});
-describe("The forward/backward links test2.", () => {
+  });
+  describe("The forward/backward links test2.", () => {
     beforeEach(() => {
-        cy.get("button[aria-label='add to favorites']").eq(0).click();
-        cy.get("header").find(".MuiToolbar-root").find("button").eq(2).click();
-        cy.get(".MuiCardActions-root").eq(0).contains("More Info").click();
+      cy.get("button[aria-label='add to favorites']").eq(0).click();
+      cy.get("header").find(".MuiToolbar-root").find("button").eq(2).click();
+      cy.get(".MuiCardActions-root").eq(0).contains("More Info").click();
     });
     it("should navigate backward and forward between the movies detail page and the Favourite page.", () => {
-        cy.get("button[aria-label='go back'").click();
-        cy.get("h3").contains("Favourite Movies");
-        cy.url().should("not.include", `/movies/${movies[0].id}`);
-        cy.get("button[aria-label='go forward'").click();
-        cy.url().should("include", `/movies/${movies[0].id}`);
-        cy.get("h3").contains(movies[0].title);
-});
-});
+      cy.get("button[aria-label='go back'").click();
+      cy.get("h3").contains("Favourite Movies");
+      cy.url().should("not.include", `/movies/${movies[0].id}`);
+      cy.get("button[aria-label='go forward'").click();
+      cy.url().should("include", `/movies/${movies[0].id}`);
+      cy.get("h3").contains(movies[0].title);
+    });
+  });
 });
