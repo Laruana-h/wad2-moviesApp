@@ -1,3 +1,6 @@
+import { ExpansionPanelActions } from "@material-ui/core";
+import { ExploreTwoTone } from "@material-ui/icons";
+
 let movies;    // List of movies from TMDB
 
 // Utility functions
@@ -6,6 +9,7 @@ const filterByTitle = (movieList, string) =>
 
 const filterByGenre = (movieList, genreId) =>
   movieList.filter((m) => m.genre_ids.includes(genreId));
+
 
 describe("Home Page ", () => {
   before(() => {
@@ -32,27 +36,7 @@ describe("Home Page ", () => {
       });
     });
    
-      describe("Filtering", () => {
-        describe("By movie title", () => {
-          it("should only display movies with entered text in the title", () => {
-            let searchString = "m";
-            let matchingMovies = filterByTitle(movies, searchString);
-            cy.get("#filled-search").clear().type(searchString); // Enter m in text box
-            cy.get(".MuiCardHeader-content").should(
-              "have.length",
-              matchingMovies.length
-            );
-            // Do a second test for certainty!
-            searchString = "o";
-            matchingMovies = filterByTitle(movies, searchString);
-            cy.get("#filled-search").clear().type(searchString); // Enter m in text box
-            cy.get(".MuiCardHeader-content").should(
-              "have.length",
-              matchingMovies.length
-            );
-          });
-         });
-      });
+     
       describe("Filtering", () => {
         describe("By movie title", () => {
          it("should only display movies with m in the title", () => {
@@ -79,6 +63,17 @@ describe("Home Page ", () => {
              cy.wrap($card).find("p").contains(matchingMovies[index].title);
            });
          });
+         it("should only display movies with xyz in the title", () => {
+            let searchString = "xyz";
+            let matchingMovies = filterByTitle(movies, searchString);
+            cy.get("#filled-search").clear().type(searchString); // Enter xyz in text box
+            cy.get(".MuiCardHeader-content").should(
+              "have.length",
+              matchingMovies.length
+            );
+           
+
+          });
        })
        describe("By movie genre" ,() => {
          // More later
