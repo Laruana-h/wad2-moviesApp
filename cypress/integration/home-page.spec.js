@@ -119,8 +119,6 @@ describe("Home Page ", () => {
           cy.get(".MuiCardHeader-avatar");
           cy.get("header").find(".MuiToolbar-root").find("button").eq(2).click();
         });
-        
-      
 
 });
 });
