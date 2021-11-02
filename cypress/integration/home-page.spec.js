@@ -111,4 +111,17 @@ describe("Home Page ", () => {
          });
      });
    });
+   describe("Favorites page", () => {
+    
+        it("should display an avatar at the top of the movie card and add it to the Favourite movies page", ()  => {
+          cy.get("button[aria-label='add to favorites']").eq(0).click();
+          cy.get("button[aria-label='add to favorites']").eq(1).click();
+          cy.get(".MuiCardHeader-avatar");
+          cy.get("header").find(".MuiToolbar-root").find("button").eq(2).click();
+        });
+        
+      
+
 });
+});
+
