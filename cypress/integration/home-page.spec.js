@@ -63,7 +63,7 @@ describe("Home Page ", () => {
              cy.wrap($card).find("p").contains(matchingMovies[index].title);
            });
          });
-         it("should only display movies with xyz in the title", () => {
+         it("should only display movies with xyz in the title and no match", () => {
             let searchString = "xyz";
             let matchingMovies = filterByTitle(movies, searchString);
             cy.get("#filled-search").clear().type(searchString); // Enter xyz in text box
@@ -91,6 +91,24 @@ describe("Home Page ", () => {
            });
          });
        });
+       describe("By movie title and genre", () => {
+        it("should display movies with the specified genre and title", () => {
+            let searchString = "f";
+            let matchingTitleMovies = filterByTitle(movies, searchString);
+            const selectedGenreId = 35;
+           const selectedGenreText = "Comedy";
+           const matchingMovies = filterByGenre(matchingTitleMovies, selectedGenreId);
+           cy.get("#filled-search").clear().type(searchString);
+           cy.get("#genre-select").click();
+           cy.get("li").contains(selectedGenreText).click();
+           cy.get(".MuiCardHeader-content").should(
+             "have.length",
+             matchingMovies.length
+           );
+           cy.get(".MuiCardHeader-content").each(($card, index) => {
+             cy.wrap($card).find("p").contains(matchingMovies[index].title);
+           });
+         });
      });
    });
- 
+});
