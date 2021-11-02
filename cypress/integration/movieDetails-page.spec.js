@@ -18,11 +18,7 @@ describe("Movie Details Page", () => {
   beforeEach(() => {
     cy.visit(`/movies/${movie.id}`);
   });
-  describe("Base tests", () => {
-    it("should display movie title in the page header", () => {
-      cy.get("h3").contains(movie.title);
-    });
-  });
+ 
 
 describe("Base tests", () => {
   it("should display movie title in the page header", () => {
@@ -41,6 +37,23 @@ describe("Base tests", () => {
           cy.wrap($card).contains(genreChips[index]);
         });
       });
+  });
+  it("should display the movie's posters", () => {
+    cy.get("h3").contains(movie.title);
+    cy.get("ul").eq(0);
+    cy.get("img");
+      // .eq(1)
+      // .within(() => {
+      //   const moviePoster = movie.map((g) => g.name);
+      //   moviePoster.unshift("Image");
+      //   cy.get("img").each(($card, index) => {
+      //     cy.wrap($card).contains(moviePoster[index]);
+      //   });
+    // });
+    
+    
+      
+   
   });
   });
 });
