@@ -42,7 +42,7 @@ describe("Base tests", () => {
     cy.get("h3").contains(movie.title);
     cy.get("ul").eq(0);
     cy.get("img");
-      // .eq(1)
+      // .eq(0)
       // .within(() => {
       //   const moviePoster = movie.map((g) => g.name);
       //   moviePoster.unshift("Image");
