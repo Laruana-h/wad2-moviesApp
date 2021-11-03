@@ -49,9 +49,7 @@ describe("Movie Details Page", () => {
         });
     });
     it("should display the movie's posters", () => {
-      // cy.get("h3").contains(movie.title);
-      // cy.get("ul").eq(0);
-      // cy.get("img");
+     
       
       const imgsrc=images.posters.map((i) => i.file_path);
       cy.get("img").each(($img, index)=> {

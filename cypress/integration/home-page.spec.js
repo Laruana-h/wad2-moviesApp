@@ -118,6 +118,7 @@ describe("Home Page ", () => {
           cy.get("button[aria-label='add to favorites']").eq(1).click();
           cy.get(".MuiCardHeader-avatar");
           cy.get("header").find(".MuiToolbar-root").find("button").eq(2).click();
+          cy.get(".MuiCardHeader-content").contains(movies[0].title);
         });
 
 });
