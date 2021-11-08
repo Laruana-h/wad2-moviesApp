@@ -6,22 +6,36 @@ import MoviePage from "./pages/movieDetailsPage";
 import FavoriteMoviesPage from "./pages/favoriteMoviesPage";
 import MovieReviewPage from "./pages/movieReviewPage";
 import SiteHeader from './components/siteHeader'
-import UpcomingMoviesPage from"./pages/UpcomingMoviesPage"
+import UpcomingMoviesPage from "./pages/UpcomingMoviesPage"
+import { QueryClientProvider, QueryClient } from "react-query";
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 const App = () => {
   return (
-    <BrowserRouter>
-       <SiteHeader />      {/* New Header  */}
-      <Switch>
-        <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
-        <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
-        <Route path="/movies/:id" component={MoviePage} />
-        <Route exact path="/" component={HomePage} />
-        <Route path="/reviews/:id" component={MovieReviewPage} />
-        <Redirect from="*" to="/" />
-      </Switch>
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <SiteHeader />      {/* New Header  */}
+        <Switch>
+          <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
+          <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
+          <Route path="/movies/:id" component={MoviePage} />
+          <Route exact path="/" component={HomePage} />
+          <Route path="/reviews/:id" component={MovieReviewPage} />
+          <Redirect from="*" to="/" />
+        </Switch>
+      </BrowserRouter>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 };
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 360000,
+      refetchInterval: 360000,
+      refetchOnWindowFocus: false
+    },
+  },
+});
 
 ReactDOM.render(<App />, document.getElementById("root"));
