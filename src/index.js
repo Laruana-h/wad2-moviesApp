@@ -11,6 +11,7 @@ import UpcomingMoviesPage from "./pages/UpcomingMoviesPage"
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools'
 import MoviesContextProvider from "./contexts/moviesContext";
+import playlistMoivePage from "./pages/playlistMoivePage"
 
 const App = () => {
   return (
@@ -18,15 +19,16 @@ const App = () => {
       <BrowserRouter>
         <SiteHeader />
         <MoviesContextProvider>
-            {" "}
-            <Switch>
+          {" "}
+          <Switch>
+          <Route exact path="/moives/playlist" component={playlistMoivePage} />
             <Route exact path="/reviews/form" component={AddMovieReviewPage} />
-          <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
-          <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
-          <Route path="/movies/:id" component={MoviePage} />
-          <Route exact path="/" component={HomePage} />
-          <Route path="/reviews/:id" component={MovieReviewPage} />
-          <Redirect from="*" to="/" />
+            <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
+            <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
+            <Route path="/movies/:id" component={MoviePage} />
+            <Route exact path="/" component={HomePage} />
+            <Route path="/reviews/:id" component={MovieReviewPage} />
+            <Redirect from="*" to="/" />
           </Switch>
         </MoviesContextProvider>
       </BrowserRouter>
