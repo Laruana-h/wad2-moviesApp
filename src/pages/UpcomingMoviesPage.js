@@ -23,7 +23,7 @@ const movies = data.results;
 // const addToFavorites = (movieId) => true 
 const playlist = movies.filter(m => m.playlist)
 localStorage.setItem('playlist', JSON.stringify(playlist))
-const addToPlaylist = (movieId) => true 
+// const addToPlaylist = (movieId) => true 
 
 return (
 <PageTemplate

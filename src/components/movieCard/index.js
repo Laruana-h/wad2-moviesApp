@@ -10,13 +10,13 @@ import Typography from "@material-ui/core/Typography";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import CalendarIcon from "@material-ui/icons/CalendarTodayTwoTone";
 import StarRateIcon from "@material-ui/icons/StarRate";
-import IconButton from "@material-ui/core/IconButton";
+// import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import img from '../../images/film-poster-placeholder.png'
 import { Link } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
-import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
+// import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 
 const useStyles = makeStyles({
   card: { maxWidth: 345 },
@@ -43,15 +43,15 @@ export default function MovieCard({ movie, action }) {
     movie.playlist = false
   }
 
-  const handleAddToFavorite = (e) => {
-    e.preventDefault();
-    addToFavorites(movie);
-  };
+  // const handleAddToFavorite = (e) => {
+  //   e.preventDefault();
+  //   addToFavorites(movie);
+  // };
 
-  const handleAddToPlaylist = (e) => {
-    e.preventDefault();
-    addToPlaylist(movie);
-  };
+  // const handleAddToPlaylist = (e) => {
+  //   e.preventDefault();
+  //   addToPlaylist(movie);
+  // };
 
   return (
     <Card className={classes.card}>
