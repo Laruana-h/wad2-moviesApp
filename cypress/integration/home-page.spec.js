@@ -67,11 +67,7 @@ describe("Home Page ", () => {
             let searchString = "xyz";
             let matchingMovies = filterByTitle(movies, searchString);
             cy.get("#filled-search").clear().type(searchString); // Enter xyz in text box
-            cy.get(".MuiCardHeader-content").should(
-              "have.length",
-              matchingMovies.length
-            );
-        
+            cy.get(".MuiCardHeader-content").should("have.length",0);
           });
           
        })
