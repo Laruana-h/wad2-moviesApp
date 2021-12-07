@@ -2,11 +2,11 @@ import React from "react";
 import PageTemplate from "../components/templateMovieListPage";
 import { useQuery } from 'react-query'
 import Spinner from '../components/spinner'
-import {getNowplayingMovies} from '../api/tmdb-api'
+import {getTopRatedMovies} from '../api/tmdb-api'
 import PlaylistAddIcon from '../components/cardIcons/addToPlaylist';
 
-const NowplayingPage = (props) => {
-const { data, error, isLoading, isError } = useQuery('nowplaying', getNowplayingMovies)
+const TopRatedPage = (props) => {
+const { data, error, isLoading, isError } = useQuery('topRated', getTopRatedMovies)
 
 if (isLoading) {
 return <Spinner />
@@ -27,7 +27,7 @@ localStorage.setItem('playlist', JSON.stringify(playlist))
 
 return (
 <PageTemplate
-title="Nowplaying Movies"
+title="Top Rated Movies"
 movies={movies}
 action={(movie) => {
 return <PlaylistAddIcon movie={movie} />
@@ -36,4 +36,4 @@ return <PlaylistAddIcon movie={movie} />
 );
 };
 
-export default NowplayingPage;
+export default TopRatedPage;
