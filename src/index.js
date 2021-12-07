@@ -6,6 +6,7 @@ import HomePage from "./pages/homePage";
 import MoviePage from "./pages/movieDetailsPage";
 import FavoriteMoviesPage from "./pages/favoriteMoviesPage";
 import MovieReviewPage from "./pages/movieReviewPage";
+import NowplayingPage from './pages/nowplayingPage';
 import SiteHeader from './components/siteHeader'
 import UpcomingMoviesPage from "./pages/UpcomingMoviesPage"
 import { QueryClientProvider, QueryClient } from "react-query";
@@ -21,7 +22,8 @@ const App = () => {
         <MoviesContextProvider>
           {" "}
           <Switch>
-          <Route exact path="/moives/playlist" component={playlistMoivePage} />
+          <Route exact path="/movies/nowplaying" component={NowplayingPage} />
+          <Route exact path="/movies/playlist" component={playlistMoivePage} />
             <Route exact path="/reviews/form" component={AddMovieReviewPage} />
             <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
             <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />

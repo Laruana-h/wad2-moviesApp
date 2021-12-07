@@ -11,6 +11,8 @@ const MoviesContextProvider = (props) => {
     let newFavorites = [];
     if (!favorites.includes(movie.id)){
       newFavorites = [...favorites, movie.id];
+    }else {
+      newFavorites=favorites;
     }
     setFavorites(newFavorites)
   };
@@ -27,6 +29,8 @@ const MoviesContextProvider = (props) => {
     let newPlaylist = [];
     if (!playlist.includes(movie.id)){
       newPlaylist = [...playlist, movie.id];
+    }else {
+      newPlaylist=playlist
     }
     setPlaylist(newPlaylist)
     console.log(newPlaylist)
