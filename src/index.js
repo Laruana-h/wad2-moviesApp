@@ -14,7 +14,8 @@ import PopularMoviePage from "./pages/popularMoviesPage";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools'
 import MoviesContextProvider from "./contexts/moviesContext";
-import playlistMoivePage from "./pages/playlistMoivePage"
+import playlistMoivePage from "./pages/playlistMoivePage";
+import RecommendationPage from "./pages/recommendMoivesPage";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
             <Route exact path="/reviews/form" component={AddMovieReviewPage} />
             <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
             <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
+            <Route path="/movies/:id/recommendations" component={RecommendationPage} />
             <Route path="/movies/:id" component={MoviePage} />
             <Route exact path="/" component={HomePage} />
             <Route path="/reviews/:id" component={MovieReviewPage} />
