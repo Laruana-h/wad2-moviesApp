@@ -16,8 +16,17 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import MoviesContextProvider from "./contexts/moviesContext";
 import playlistMoivePage from "./pages/playlistMoivePage";
 import RecommendationPage from "./pages/recommendMoivesPage";
+// import Login from "./pages/Login";
+
+import { FirebaseAppProvider } from 'reactfire';
+import firebaseConfig from './firebase/firebaseConfig';
+import { useFirebaseApp } from 'reactfire';
+import Login from './firebase/Login';
+
 
 const App = () => {
+  const firebase = useFirebaseApp();
+  console.log(firebase);
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
@@ -25,23 +34,31 @@ const App = () => {
         <MoviesContextProvider>
           {" "}
           <Switch>
+
             <Route exact path="/movies/popular" component={PopularMoviePage} />
             <Route exact path="/movies/topRated" component={TopRatedPage} />
             <Route exact path="/movies/nowplaying" component={NowplayingPage} />
             <Route exact path="/movies/playlist" component={playlistMoivePage} />
-            <Route exact path="/reviews/form" component={AddMovieReviewPage} />
             <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
             <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
+
+            <Route exact path="/reviews/form" component={AddMovieReviewPage} />
+            <Route path="/reviews/:id" component={MovieReviewPage} />
+
             <Route path="/movies/:id/recommendations" component={RecommendationPage} />
             <Route path="/movies/:id" component={MoviePage} />
+
+            <Route exact path="/login" component={Login} />
+
             <Route exact path="/" component={HomePage} />
-            <Route path="/reviews/:id" component={MovieReviewPage} />
+            
             <Redirect from="*" to="/" />
           </Switch>
         </MoviesContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
+   
   );
 };
 const queryClient = new QueryClient({
@@ -54,4 +71,5 @@ const queryClient = new QueryClient({
   },
 });
 
-ReactDOM.render(<App />, document.getElementById("root"));
+
+ReactDOM.render(<FirebaseAppProvider firebaseConfig={firebaseConfig}><App /></FirebaseAppProvider>, document.getElementById("root"));
