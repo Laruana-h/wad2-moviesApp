@@ -16,6 +16,8 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import MoviesContextProvider from "./contexts/moviesContext";
 import playlistMoivePage from "./pages/playlistMoivePage";
 import RecommendationPage from "./pages/recommendMoivesPage";
+import ActorsHomePage from "./pages/actorsHomepage";
+// import ActorsContextProvider from "./contexts/actorsContext";
 // import Login from "./pages/Login";
 
 import { FirebaseAppProvider } from 'reactfire';
@@ -50,11 +52,14 @@ const App = () => {
 
             <Route exact path="/login" component={Login} />
 
+            <Route exact path="/actors" component={ActorsHomePage} />
+
             <Route exact path="/" component={HomePage} />
             
             <Redirect from="*" to="/" />
           </Switch>
         </MoviesContextProvider>
+
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

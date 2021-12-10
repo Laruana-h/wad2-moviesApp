@@ -3,6 +3,7 @@ import React, { useState } from "react";
 export const MoviesContext = React.createContext(null);
 
 const MoviesContextProvider = (props) => {
+  const [liked, setLiked] = useState( [] )
   const [favorites, setFavorites] = useState( [] )
   const [myReviews, setMyReviews] = useState( {} ) 
   const [playlist, setPlaylist] = useState( [] )
@@ -43,12 +44,29 @@ const MoviesContextProvider = (props) => {
       (mId) => mId !== movie.id
     ) )
   };
-
+  const addToLiked = (actor) => {
+    let newLiked = [];
+    if (!liked.includes(actor.id)){
+      newLiked = [...liked, actor.id];
+    }else {
+      newLiked=liked;
+    }
+    setLiked(newLiked)
+  };
+  // We will use this function in a later section
+  const removeFromLiked = (actor) => {
+    setLiked( liked.filter(
+      (aId) => aId !== actor.id
+    ) )
+  };
   return (
     <MoviesContext.Provider
       value={{
         favorites,
         playlist,
+        liked,
+        addToLiked,
+        removeFromLiked,
         addToFavorites,
         removeFromFavorites,
         addReview,
