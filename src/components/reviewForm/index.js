@@ -10,6 +10,8 @@ import { withRouter } from "react-router-dom";
 import MenuItem from "@material-ui/core/MenuItem";
 import Snackbar from "@material-ui/core/Snackbar"; 
 import MuiAlert from "@material-ui/lab/Alert";
+import StarIcon from '@material-ui/icons/Star';
+import Rating from '@material-ui/lab/Rating';
 
 const ratings = [
   {
@@ -33,7 +35,18 @@ const ratings = [
     label: "Terrible",
   },
 ];
-
+const labels = {
+  0.5: 'Useless',
+  1: 'Useless+',
+  1.5: 'Poor',
+  2: 'Poor+',
+  2.5: 'Ok',
+  3: 'Ok+',
+  3.5: 'Good',
+  4: 'Good+',
+  4.5: 'Excellent',
+  5: 'Excellent+',
+};
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: theme.spacing(2),
@@ -67,7 +80,9 @@ const ReviewForm = ({ movie, history }) => {
   const context = useContext(MoviesContext);
   const [rating, setRating] = useState(3);
   const [open, setOpen] = React.useState(false);  //NEW
-  
+  const [value, setValue] = React.useState(2);
+  const [hover, setHover] = React.useState(-1);
+
   const handleSnackClose = (event) => {     // NEW
     setOpen(false);
     history.push("/movies/favorites");
@@ -86,7 +101,8 @@ const ReviewForm = ({ movie, history }) => {
   };
 
   return (
-    <Box component="div" className={classes.root}>
+    <Box component="div" className={classes.root}
+    >
       <Typography component="h2" variant="h3">
         Write a review
       </Typography>
@@ -163,7 +179,29 @@ const ReviewForm = ({ movie, history }) => {
             </MenuItem>
           ))}
         </TextField>
-
+        <Box
+      sx={{
+        width: 200,
+        display: 'flex',
+        alignItems: 'center',
+      }}
+    >
+      <Rating
+        name="hover-feedback"
+        value={value}
+        precision={0.5}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+        onChangeActive={(event, newHover) => {
+          setHover(newHover);
+        }}
+        emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
+      />
+      {value !== null && (
+        <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
+      )}
+    </Box>
         <Box className={classes.buttons}>
           <Button
             type="submit"
@@ -188,6 +226,7 @@ const ReviewForm = ({ movie, history }) => {
             Reset
           </Button>
         </Box>
+
       </form>
     </Box>
   );

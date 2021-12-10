@@ -10,13 +10,14 @@ import Typography from "@material-ui/core/Typography";
 import StarsIcon from '@material-ui/icons/EmojiEmotions';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import CalendarIcon from "@material-ui/icons/CalendarTodayTwoTone";
-import HouseIcon from "@material-ui/icons/House";
+import HouseIcon from "@material-ui/icons/TurnedInNot";
 // import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import img from '../../images/film-poster-placeholder.png'
 import { Link } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
-import { ActorsContext } from "../../contexts/actorsContext";
+import { MoviesContext } from "../../contexts/moviesContext";
+// import { ActorsContext } from "../../contexts/actorsContext";
 // import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 
 const useStyles = makeStyles({
@@ -29,7 +30,7 @@ const useStyles = makeStyles({
 
 export default function ActorCard({ actor, action }) {
     const classes = useStyles();
-    const { liked } = useContext(ActorsContext);
+    const { liked } = useContext(MoviesContext);
     //   const { playlist } = useContext(MoviesContext);
 
     if (liked.find((id) => id === actor.id)) {
@@ -89,16 +90,16 @@ export default function ActorCard({ actor, action }) {
                     </Grid>
                     <Grid item xs={10}>
                         <Typography variant="h8" component="p">
-                            <HouseIcon fontSize="small" />Hometown:
-                            {actor.place_of_birth}
+                            <HouseIcon fontSize="small" /> ID :
+                            {actor.id}
                         </Typography>
                     </Grid>
-                    <Grid item xs={10}>
+                    {/* <Grid item xs={10}>
                         <Typography variant="h8" component="p">
                             <CalendarIcon fontSize="small" />Birthday:
                             {actor.birthday}
                         </Typography>
-                    </Grid>
+                    </Grid> */}
                     
 
                 </Grid>

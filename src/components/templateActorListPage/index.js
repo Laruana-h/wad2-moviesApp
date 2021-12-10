@@ -14,20 +14,34 @@ const useStyles = makeStyles({
 function ActorListPageTemplate({ actors, title, action }) {
   const classes = useStyles();
   const [nameFilter, setNameFilter] = useState("");
+  const [sortinFilter, setsortinFilter]=useState(false);
 //   const [genreFilter, setGenreFilter] = useState("0");
 //   const genreId = Number(genreFilter);
 
+
   let displayedActors = actors
-  console.log(actors);
-    // .filter((a) => {
-    //   return a.name.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
-    // })
+    .filter((a) => {
+      return a.name.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
+    })
+
     // .filter((m) => {
     //   return genreId > 0 ? m.genre_ids.includes(genreId) : true;
     // });
 
   const handleChange = (type, value) => {
     if (type === "name") setNameFilter(value);
+
+    else if(type==="ASC"){  setsortinFilter(false)
+  }
+    else if(type==="DESC") {  
+      setsortinFilter(true);
+    
+
+      
+
+
+    }
+  
     // else setGenreFilter(value);
   };
 
@@ -41,6 +55,7 @@ function ActorListPageTemplate({ actors, title, action }) {
           <FilterActorsCard
             onUserInput={handleChange}
             titleFilter={nameFilter}
+            sortinFilter={sortinFilter}
             // genreFilter={genreFilter}
           />
         </Grid>

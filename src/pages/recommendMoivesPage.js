@@ -13,6 +13,7 @@ const RecommendationPage = (props) => {
       ["recommendations", { id: id }],
       getRecommendations
     );
+    
 if (isLoading) {
 return <Spinner />
 }

@@ -43,7 +43,7 @@ export default ({ movie }) => {
                 {" "}
                 <Link
                   to={{
-                    pathname: `/actor/${actor.id}`,
+                    pathname: `/actors/${actor.id}`,
                     state: {
                       actorID: actor.id,
                     }

@@ -12,6 +12,7 @@ import Menu from "@material-ui/core/Menu";
 import { withRouter } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { TemporaryDrawer } from "../nav";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -28,12 +29,8 @@ const SiteHeader = ( { history }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const menuOptions = [
-    { label: "Actors", path: "/actors" },
     { label: "Login", path: "/login" },
-    { label: "Home", path: "/" },
-    { label: "Upcoming", path: "/movies/upcoming" },
-    { label: "Favorites", path: "/movies/favorites" },
-    { label: "Playlist", path: "/movies/playlist" },
+    { label: "Upcoming", path: "/movies/upcoming" }, 
     { label: "Nowplaying", path: "/movies/nowplaying" },
     { label: "Toprated", path: "/movies/topRated" },
     { label: "Popular", path: "/movies/popular" },
@@ -54,6 +51,8 @@ const SiteHeader = ( { history }) => {
           <Typography variant="h4" className={classes.title}>
             TMDB Client
           </Typography>
+          <TemporaryDrawer/>
+      <nav className={classes.title}></nav>
           <Typography variant="h6" className={classes.title}>
             All you ever wanted to know about Movies!
           </Typography>

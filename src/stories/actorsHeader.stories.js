@@ -1,7 +1,7 @@
 import React from "react";
 import ActorsHeader from "../components/headerActorList";
 import { MemoryRouter } from "react-router";
-import ActorsContextProvider from "../contexts/actorsContext";
+import ActorsContextProvider from "../contexts/moviesContext";
 
 export default {
   title: "Home Page/ActorPageHeader",

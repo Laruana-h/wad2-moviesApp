@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import HomePage from "./pages/homePage";
 import MoviePage from "./pages/movieDetailsPage";
+import ActorPage from "./pages/actorDetailsPage";
 import FavoriteMoviesPage from "./pages/favoriteMoviesPage";
 import MovieReviewPage from "./pages/movieReviewPage";
 import NowplayingPage from './pages/nowplayingPage';
@@ -51,7 +52,8 @@ const App = () => {
             <Route path="/movies/:id" component={MoviePage} />
 
             <Route exact path="/login" component={Login} />
-
+            
+            <Route exact path="/actors/:id" component={ActorPage} />
             <Route exact path="/actors" component={ActorsHomePage} />
 
             <Route exact path="/" component={HomePage} />

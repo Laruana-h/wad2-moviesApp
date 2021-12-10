@@ -2,7 +2,7 @@ import React from "react";
 import ActorList from "../components/actorList";
 import SampleActor from "./sampleActor";
 import { MemoryRouter } from "react-router";
-import ActorsContextProvider from "../contexts/actorsContext";
+import ActorsContextProvider from "../contexts/moviesContext";
 import Grid from "@material-ui/core/Grid";
 import AddToLikedIcon from "../components/cardIcons/addToLiked";
 
