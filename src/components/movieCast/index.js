@@ -32,7 +32,7 @@ export default ({ movie }) => {
                   src={
                     actor.profile_path
                       ? `https://image.tmdb.org/t/p/h100/${actor.profile_path}`
-                      : "./actor-picture-placeholder.png"
+                      : "../../images/film-poster-placeholder.png"
                   }
                   alt={actor.name}
                 />
@@ -43,7 +43,7 @@ export default ({ movie }) => {
                 {" "}
                 <Link
                   to={{
-                    pathname: `/person/${actor.id}`,
+                    pathname: `/actor/${actor.id}`,
                     state: {
                       actorID: actor.id,
                     }
