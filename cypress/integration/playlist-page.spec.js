@@ -30,8 +30,7 @@ describe("Playlist Page ", () => {
     });
     describe("Base test", () => {
         it("displays page header", () => {
-            cy.get("header").find(".MuiToolbar-root").find("button").eq(1).click();
-            cy.get("li").eq(6).click();
+            cy.get("header").find(".MuiToolbar-root").find("button").eq(4).click();
             cy.get("h3").contains("Must Watch Movies");
             cy.get("h1").contains("Filter the movies");
         });
