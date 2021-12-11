@@ -69,15 +69,23 @@ export function TemporaryDrawer() {
       <Divider/>
       <List>
          <ListItem>
-           <ListItemIcon><HomeRoundedIcon/></ListItemIcon>
-           <Link to="/">HomePage</Link>
+           <ListItemIcon><FaceRetouchingNaturalRoundedIcon/></ListItemIcon>
+           <Link to="/actors">Popular Actors</Link>
            <ListItemText />
          </ListItem>
       </List>
       <List>
          <ListItem>
-           <ListItemIcon><FaceRetouchingNaturalRoundedIcon/></ListItemIcon>
-           <Link to="/actors">Popular Actors</Link>
+           <ListItemIcon><BookIcon/></ListItemIcon>
+           <Link to="/actors/liked">Liked Actors</Link>
+           <ListItemText />
+         </ListItem>
+      </List>
+      <Divider/>
+      <List>
+         <ListItem>
+           <ListItemIcon><HomeRoundedIcon/></ListItemIcon>
+           <Link to="/login">Login</Link>
            <ListItemText />
          </ListItem>
       </List>

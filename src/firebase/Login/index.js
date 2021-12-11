@@ -55,7 +55,6 @@ const Login = () => {
         <button type="submit">Log in</button>
       </form>
       <div className="btnContainer">
-                    
                         <>
                         
                         <p>Don't have account?<span >Sign up</span></p>
@@ -65,7 +64,9 @@ const Login = () => {
                     
                 </div>
       {user.error && <h4>{user.error}</h4>}
-      
+     
+
+
     </>
   )
 };

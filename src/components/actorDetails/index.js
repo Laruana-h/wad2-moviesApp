@@ -1,14 +1,14 @@
 
 import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
-import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import MonetizationIcon from "@material-ui/icons/MonetizationOn";
-import StarRate from "@material-ui/icons/StarRate";
+// import AccessTimeIcon from "@material-ui/icons/AccessTime";
+// import MonetizationIcon from "@material-ui/icons/MonetizationOn";
+// import StarRate from "@material-ui/icons/StarRate";
 import CalendarIcon from "@material-ui/icons/CalendarTodayTwoTone";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import HouseIcon from "@material-ui/icons/House";
-import { border } from "polished";
+// import { border } from "polished";
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -18,6 +18,7 @@ import MoviesContextProvider from "./contexts/moviesContext";
 import playlistMoivePage from "./pages/playlistMoivePage";
 import RecommendationPage from "./pages/recommendMoivesPage";
 import ActorsHomePage from "./pages/actorsHomepage";
+import LikedActorsPage from "./pages/likedActorsPage";
 // import ActorsContextProvider from "./contexts/actorsContext";
 // import Login from "./pages/Login";
 
@@ -52,7 +53,7 @@ const App = () => {
             <Route path="/movies/:id" component={MoviePage} />
 
             <Route exact path="/login" component={Login} />
-            
+            <Route exact path="/actors/liked" component={LikedActorsPage} />
             <Route exact path="/actors/:id" component={ActorPage} />
             <Route exact path="/actors" component={ActorsHomePage} />
 

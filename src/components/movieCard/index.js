@@ -16,7 +16,7 @@ import img from '../../images/film-poster-placeholder.png'
 import { Link } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
- import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
+//  import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 
 const useStyles = makeStyles({
   card: { maxWidth: 345 },

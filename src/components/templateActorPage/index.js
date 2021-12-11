@@ -5,6 +5,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import { getActorImages } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
+// import GridList from "@material-ui/core/GridList";
+// import GridListTile from "@material-ui/core/GridListTile";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 const TemplateActorPage = ({ actor, children }) => {
   const classes = useStyles();
-  const { data , error, isLoading, isError } = useQuery(
+  const {  error, isLoading, isError } = useQuery(
     ["images", { id: actor.id }],
     getActorImages
   );
@@ -34,7 +37,7 @@ const TemplateActorPage = ({ actor, children }) => {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
-  const images = data.posters 
+  // const images = data.posters 
 
   return (
     <>
@@ -49,10 +52,10 @@ const TemplateActorPage = ({ actor, children }) => {
                   />
             {/* <GridList cellHeight={500} className={classes.gridList} cols={1}>
               {images.map((image) => (
-                <GridListTile key={actor.profile_path} className={classes.gridListTile} cols={1}>
+                <GridListTile key={image.file_path} className={classes.gridListTile} cols={1}>
                   <img
-                    src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
-                    alt={actor.profile_path}
+                    src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
+                    alt={image.poster_path}
                   />
 
                 </GridListTile>

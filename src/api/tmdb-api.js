@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const getMovies = () => {
   return fetch(
     `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1`
@@ -200,3 +202,9 @@ export const getPopularMovies = () => {
      throw error
   });
 };
+export const fetchMovieVideo = async (id) => {
+  try {
+      const { data } = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`);
+      return data['results'][0];
+  } catch (error) { }
+}

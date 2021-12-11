@@ -13,6 +13,7 @@ import Box from '@material-ui/core/Box';
 import MovieSimilar from "../components/movieSimilar";
 import MovieCast from "../components/movieCast"
 
+
 const MovieDetailsPage = (props) => {
   const { id } = props.match.params;
   const { data: movie, error, isLoading, isError } = useQuery(
@@ -45,11 +46,19 @@ const MovieDetailsPage = (props) => {
               }}
             >
               <ButtonGroup variant="text" aria-label="medium secondary button group">
-              <Link to={`/movies/${movie.id}/recommendations`}>
-              <Button>
+              
+            {/* {!props.history.location.pathname.endsWith("/recommendations") ? (
+              <Link to={`/movies/${id}/recommendations`}>
+                <Button>
                 Recommendations..
-              </Button>
-            </Link>
+                </Button>
+              </Link>
+            ) : (
+              <Link
+                to={`/movies/${id}`}>
+                <Button>Hide</Button>
+              </Link>
+            )} */}
             {!props.history.location.pathname.endsWith("/similar") ? (
               <Link to={`/movies/${id}/similar`}>
                 <Button>
