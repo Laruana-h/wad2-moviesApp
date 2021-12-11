@@ -1,6 +1,3 @@
-// import { ExpansionPanelActions } from "@material-ui/core";
-// import { ExploreTwoTone } from "@material-ui/icons";
-
 let movies;    // List of movies from TMDB
 
 // Utility functions
@@ -10,12 +7,11 @@ const filterByTitle = (movieList, string) =>
 const filterByGenre = (movieList, genreId) =>
   movieList.filter((m) => m.genre_ids.includes(genreId));
 
-
-describe("Home Page ", () => {
+describe("Upcoming Page ", () => {
   before(() => {
     // Get movies from TMDB and store in movies variable.
     cy.request(
-      `https://api.themoviedb.org/3/discover/movie?api_key=${Cypress.env(
+      `https://api.themoviedb.org/3/movie/upcoming?api_key=${Cypress.env(
         "TMDB_KEY"
       )}&language=en-US&include_adult=false&include_video=false&page=1`
     )
@@ -25,31 +21,17 @@ describe("Home Page ", () => {
       })
   })
   beforeEach(() => {
-    cy.visit("/")
-  });
+    cy.visit("/movies/upcoming")
 
+  });
   
     describe("Base test", () => {
       it("displays page header", () => {
-        cy.get("h3").contains("Discover Movies");
+        cy.get("h3").contains("Upcoming Movies");
         cy.get("h1").contains("Filter the movies");
       });
-    });
-    describe("Meun Bar test", () => {
-      it("displays favourite page", () => {
-          cy.get("header").find(".MuiToolbar-root").find("button").eq(1).click();
-          cy.get("li").eq(0).click();
-          cy.url().should("include", `/movies/favorites`);
-      });
-      it("displays actor page", () => {
-        cy.get("header").find(".MuiToolbar-root").find("button").eq(1).click();
-        cy.get("li").eq(2).click();
-        cy.url().should("include", `/actors`);
-    });
-    });
-   
-     
-      describe("Filtering", () => {
+    })
+    describe("Filtering", () => {
         describe("By movie title", () => {
          it("should only display movies with m in the title", () => {
            let searchString = "m";
@@ -79,8 +61,7 @@ describe("Home Page ", () => {
             let searchString = "xyz";
             cy.get("#filled-search").clear().type(searchString); // Enter xyz in text box
             cy.get(".MuiCardHeader-content").should(
-              "have.length",0
-            );
+              "have.length",0);
         
           });
           
@@ -121,17 +102,15 @@ describe("Home Page ", () => {
          });
      });
    });
-   describe("Favorites page", () => {
+   describe("Playlist page", () => {
     
-        it("should display an avatar at the top of the movie card and add it to the Favourite movies page", ()  => {
-          cy.get("button[aria-label='add to favorites']").eq(0).click();
-          cy.get("button[aria-label='add to favorites']").eq(1).click();
-          cy.get(".MuiCardHeader-avatar");
+        it("should add it to the Playlist movies page", ()  => {
+          cy.get("button[aria-label='add to playlist']").eq(0).click();
+          cy.get("button[aria-label='add to playlist']").eq(1).click();
           cy.get("header").find(".MuiToolbar-root").find("button").eq(1).click();
-          cy.get("li").eq(0).click();
+          cy.get("li").eq(1).click();
           cy.get(".MuiCardHeader-content").contains(movies[0].title);
         });
 
 });
 });
-

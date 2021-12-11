@@ -1,5 +1,6 @@
 import React from "react";
 import RateReviewIcon from "@material-ui/icons/RateReview";
+import IconButton from "@material-ui/core/IconButton";
 import { Link } from "react-router-dom";
 
 const WriteReviewIcon = ({ movie }) => {
@@ -11,8 +12,9 @@ const WriteReviewIcon = ({ movie }) => {
           movieId: movie.id,
         },
       }}
-    >
+    ><IconButton aria-label="write review" >
       <RateReviewIcon color="primary" fontSize="large" />
+      </IconButton>
     </Link>
   );
 };

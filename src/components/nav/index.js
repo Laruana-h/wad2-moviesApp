@@ -16,7 +16,8 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuOpenIcon from '@material-ui/icons/MenuOpen';
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import FaceRetouchingNaturalRoundedIcon from '@material-ui/icons/FaceRounded';
-
+import PageviewIcon from '@material-ui/icons/Pageview';
+import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 const useStyles = makeStyles({
   list: {
     width: 250
@@ -76,7 +77,7 @@ export function TemporaryDrawer() {
       </List>
       <List>
          <ListItem>
-           <ListItemIcon><BookIcon/></ListItemIcon>
+           <ListItemIcon><FavoriteBorderOutlinedIcon/></ListItemIcon>
            <Link to="/actors/liked">Liked Actors</Link>
            <ListItemText />
          </ListItem>
@@ -89,6 +90,13 @@ export function TemporaryDrawer() {
            <ListItemText />
          </ListItem>
       </List>
+      <List>
+         <ListItem>
+           <ListItemIcon><PageviewIcon/></ListItemIcon>
+           <Link to="/tv">Search TV</Link>
+           <ListItemText />
+         </ListItem>
+      </List>
     </div>
   );
 
@@ -96,7 +104,7 @@ export function TemporaryDrawer() {
     <div>
         <IconButton><MenuOpenIcon/>
         <nav className={classes.title}></nav>
-      {(["Menu"]).map((anchor) => (
+      {(["MENU LIST"]).map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
           <Drawer

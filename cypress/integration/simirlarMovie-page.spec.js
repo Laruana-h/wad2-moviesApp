@@ -1,8 +1,8 @@
 let movieId = 335983; // The movie Venom
 let movie;
-// let reviews;
+let similar;
 let images;
-describe("Movie Details Page", () => {
+describe("Similar Page", () => {
   before(() => {
     cy.request(
       `https://api.themoviedb.org/3/movie/${movieId}?api_key=${Cypress.env(
@@ -24,9 +24,20 @@ describe("Movie Details Page", () => {
         images = movieImages;
         return movieImages.id;
       });
+      cy.request(
+        `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${Cypress.env(
+          "TMDB_KEY"
+        )}`
+      ) 
+      .its("body")
+      .then((similarMovies) => {
+        similar = similarMovies;
+        return similarMovies.id;
+      });
   });
   beforeEach(() => {
     cy.visit(`/movies/${movie.id}`);
+    cy.get("button[id='similar']").click();
   });
 
 
@@ -34,7 +45,6 @@ describe("Movie Details Page", () => {
     it("should display movie title in the page header", () => {
       cy.get("h3").contains(movie.title);
     });
-
     it("should display the movie's details", () => {
       cy.get("h3").contains("Overview");
       cy.get("h3").next().contains(movie.overview);
@@ -49,8 +59,6 @@ describe("Movie Details Page", () => {
         });
     });
     it("should display the movie's posters", () => {
-     
-      
       const imgsrc=images.posters.map((i) => i.file_path);
       cy.get("img").each(($img, index)=> {
       cy.wrap($img).should('have.attr','src','https://image.tmdb.org/t/p/w500/'+imgsrc[index]);
@@ -59,4 +67,25 @@ describe("Movie Details Page", () => {
 
     });
   });
+  describe("Simiar table page", () => {
+    it("should display an avatar at the top of the movie card and add it to the Favourite movies page", () => {
+        cy.get("th").eq(0).contains("Name");
+        cy.get("th").eq(1).contains("Overview");
+        cy.get("th").eq(2).contains("More");
+        // const genreChips = similar.overview.map((g) => g.name);
+
+        // cy.get("td").each(($card, index) => {
+        //   cy.wrap($card).contains(genreChips[index]);
+        // });
+        // cy.get('tr').find(`td:contains(${similar.overview})`);
+        
+    });
+    // it("should display the movie's posters", () => {
+    //     cy.get('tr').find(`td:contains(${author})`).should('have.length', 1)
+    //     // cy.get("tr").eq(0).contains(`${similar[0].id}`);
+    //     // cy.url().should("include", `/movies/${similar[0].id}`);
+
+    // });
+
+})
 });

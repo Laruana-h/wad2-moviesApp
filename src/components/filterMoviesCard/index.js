@@ -18,7 +18,7 @@ import Spinner from '../spinner'
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
-    backgroundColor: "#CAFF70",
+    backgroundColor: "#B4EEB4",
   },
   media: { height: 300 },
 

@@ -39,7 +39,7 @@ const ActorDetails = ({ actor }) => {  // Don't miss this!
       Biography
       </Typography>
 
-      <Typography variant="h9" component="p" className={classes.bord}>
+      <Typography variant="h7" component="p" className={classes.bord}>
         {actor.biography}
       </Typography>
       <Paper component="ul" className={classes.root}>

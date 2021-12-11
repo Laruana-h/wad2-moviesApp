@@ -5,15 +5,15 @@ import { makeStyles } from "@material-ui/core/styles";
 import { getActorImages } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
-// import GridList from "@material-ui/core/GridList";
-// import GridListTile from "@material-ui/core/GridListTile";
+import GridList from "@material-ui/core/GridList";
+import GridListTile from "@material-ui/core/GridListTile";
 
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     justifyContent: "space-around",
-    width: 300,
+    width: 400,
     height:600
     
   },
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 const TemplateActorPage = ({ actor, children }) => {
   const classes = useStyles();
-  const {  error, isLoading, isError } = useQuery(
+  const {  data,error, isLoading, isError } = useQuery(
     ["images", { id: actor.id }],
     getActorImages
   );
@@ -37,7 +37,7 @@ const TemplateActorPage = ({ actor, children }) => {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
-  // const images = data.posters 
+  const images = data.profiles 
 
   return (
     <>
@@ -46,10 +46,10 @@ const TemplateActorPage = ({ actor, children }) => {
       <Grid container spacing={5} style={{ padding: "15px" }}>
         <Grid item xs={3}>
           <div className={classes.root}>
-          <img
+          {/* <img
                     src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
                     alt={actor.profile_path}
-                  />
+                  /> */}
             {/* <GridList cellHeight={500} className={classes.gridList} cols={1}>
               {images.map((image) => (
                 <GridListTile key={image.file_path} className={classes.gridListTile} cols={1}>
@@ -61,6 +61,17 @@ const TemplateActorPage = ({ actor, children }) => {
                 </GridListTile>
               ))}
             </GridList> */}
+            <GridList cellHeight={500} className={classes.gridList} cols={1}>
+              {images.map((image) => (
+                <GridListTile key={image.file_path} className={classes.gridListTile} cols={1}>
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
+                    alt={image.poster_path}
+                  />
+                </GridListTile>
+              ))}
+            </GridList>
+
           </div>
         </Grid>
 

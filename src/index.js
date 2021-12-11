@@ -19,12 +19,13 @@ import playlistMoivePage from "./pages/playlistMoivePage";
 import ActorsHomePage from "./pages/actorsHomepage";
 import LikedActorsPage from "./pages/likedActorsPage";
 // import ActorsContextProvider from "./contexts/actorsContext";
-// import Login from "./pages/Login";
+import Login from "./pages/loginPage";
+import TV from "./pages/searchTVpage";
 
 import { FirebaseAppProvider } from 'reactfire';
 import firebaseConfig from './firebase/firebaseConfig';
 import { useFirebaseApp } from 'reactfire';
-import Login from './firebase/Login';
+// import Login from './firebase/Login';
 
 
 const App = () => {
@@ -38,7 +39,8 @@ const App = () => {
         <MoviesContextProvider>
           {" "}
           <Switch>
-
+          <Route exact path="/tv" component={TV} />
+          <Route exact path="/movies/login" component={Login} />
             <Route exact path="/movies/popular" component={PopularMoviePage} />
             <Route exact path="/movies/topRated" component={TopRatedPage} />
             <Route exact path="/movies/nowplaying" component={NowplayingPage} />

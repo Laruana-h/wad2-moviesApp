@@ -29,7 +29,7 @@ const LikedActorsPage = () => {
 
   return (
     <PageTemplate
-      title="Favourite Movies"
+      title="Liked Actors"
       actors={actors}
       action={(actor) => {
         return (

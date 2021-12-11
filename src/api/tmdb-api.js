@@ -206,18 +206,44 @@ export const fetchMovieVideo = async (id) => {
       return data['results'][0];
   } catch (error) { }
 }
-export const fetchNowPlayingMovies = async () => {
-  const {data} = await axios.get(
-    `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1` )
-          const modifiedData = data['results'].map((m) => ({
-          id: m['id'],
-          backPoster: 'https://image.tmdb.org/t/p/original/' + m['backdrop_path'],
-          popularity: m['popularith'],
-          title: m['title'],
-          poster: 'https://image.tmdb.org/t/p/original/' + m['poster_path'],
-          overview: m['overview'],
-          rating: m['vote_average'],
-      }))
-      return modifiedData;
-    }   
+
+export const searchTV = async ({query})=>{
+  const url =`https://api.themoviedb.org/3/search/tv?api_key=e572f589327604d8519e6a2cbdc9836f&language=en-US&page=1&include_adult=false&query=${query}`;
+  const res = await fetch(url);
+  return await res.json();
+}
+
+    export const login = async (user) => {
+      let res = await fetch(`https://api.themoviedb.org/3/authentication/token/new?api_key=${process.env.REACT_APP_TMDB_KEY}`);
+      let { request_token } = await res.json();
+      res = await fetch('https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key=e572f589327604d8519e6a2cbdc9836f', {
+        method: "post",
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8'
+        },
+        body: JSON.stringify({
+          ...user,
+          request_token
+        })
+      });
+      res = await res.json();
+      if (res.success) {
+        res = await fetch("https://api.themoviedb.org/3/authentication/session/new?api_key=e572f589327604d8519e6a2cbdc9836f", {
+          method: "post",
+          headers: {
+            'Content-Type': 'application/json;charset=UTF-8'
+          },
+          body: JSON.stringify({
+            request_token: res.request_token
+          })
+        })
+        return await res.json()
+      }
+      return false;
+    }
+    
+    export const getAccount = async () => {
+      const res = await fetch("https://api.themoviedb.org/3/account?api_key=e572f589327604d8519e6a2cbdc9836f&session_id=" + localStorage.getItem("session"))
+      return await res.json();
+    }
   

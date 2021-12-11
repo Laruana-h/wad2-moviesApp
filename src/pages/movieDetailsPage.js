@@ -46,7 +46,7 @@ const MovieDetailsPage = (props) => {
                 },
               }}
             >
-              <ButtonGroup variant="contained" aria-label="outlined primary button group" >
+              <ButtonGroup variant="contained" aria-label="outlined primary button group" backgroundColor="primary">
               
             {/* {!props.history.location.pathname.endsWith("/recommendations") ? (
               <Link to={`/movies/${id}/recommendations`}>
@@ -62,7 +62,7 @@ const MovieDetailsPage = (props) => {
             )} */}
             {!props.history.location.pathname.endsWith("/recommendations") ? (
               <Link to={`/movies/${id}/recommendations`}>
-                <Button>
+                <Button color="primary">
                   Recommendations
                 </Button>
               </Link>
@@ -74,7 +74,7 @@ const MovieDetailsPage = (props) => {
             )}
             {!props.history.location.pathname.endsWith("/similar") ? (
               <Link to={`/movies/${id}/similar`}>
-                <Button>
+                <Button id="similar" color="primary">
                   Similar Movies
                 </Button>
               </Link>
@@ -86,7 +86,7 @@ const MovieDetailsPage = (props) => {
             )}
             {!props.history.location.pathname.endsWith("/cast") ? (
               <Link to={`/movies/${id}/cast`}>
-                <Button>
+                <Button color="primary">
                   Show Cast
                 </Button>
               </Link>
