@@ -16,7 +16,6 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools'
 import MoviesContextProvider from "./contexts/moviesContext";
 import playlistMoivePage from "./pages/playlistMoivePage";
-import RecommendationPage from "./pages/recommendMoivesPage";
 import ActorsHomePage from "./pages/actorsHomepage";
 import LikedActorsPage from "./pages/likedActorsPage";
 // import ActorsContextProvider from "./contexts/actorsContext";
@@ -35,6 +34,7 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <SiteHeader />
+      
         <MoviesContextProvider>
           {" "}
           <Switch>
@@ -49,7 +49,6 @@ const App = () => {
             <Route exact path="/reviews/form" component={AddMovieReviewPage} />
             <Route path="/reviews/:id" component={MovieReviewPage} />
 
-            <Route path="/movies/:id/recommendations" component={RecommendationPage} />
             <Route path="/movies/:id" component={MoviePage} />
 
             <Route exact path="/login" component={Login} />

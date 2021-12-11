@@ -40,10 +40,9 @@ const MoviesContextProvider = (props) => {
     setPlaylist( playlist.filter(
       (mId) => mId !== movie.id
     ) )
-    console.log(playlist.filter(
-      (mId) => mId !== movie.id
-    ) )
+    
   };
+  
   const addToLiked = (actor) => {
     let newLiked = [];
     if (!liked.includes(actor.id)){

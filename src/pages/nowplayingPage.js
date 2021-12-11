@@ -26,6 +26,7 @@ localStorage.setItem('playlist', JSON.stringify(playlist))
 // const addToPlaylist = (movieId) => true 
 
 return (
+    
 <PageTemplate
 title="Nowplaying Movies"
 movies={movies}
@@ -33,7 +34,9 @@ action={(movie) => {
 return <PlaylistAddIcon movie={movie} />
 }}
 />
+
 );
+
 };
 
 export default NowplayingPage;

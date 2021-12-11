@@ -11,6 +11,7 @@ import Button from "@material-ui/core/Button";
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Box from '@material-ui/core/Box';
 import MovieSimilar from "../components/movieSimilar";
+import MovieRecommend from "../components/movieRecommend";
 import MovieCast from "../components/movieCast"
 
 
@@ -45,7 +46,7 @@ const MovieDetailsPage = (props) => {
                 },
               }}
             >
-              <ButtonGroup variant="text" aria-label="medium secondary button group">
+              <ButtonGroup variant="contained" aria-label="outlined primary button group" >
               
             {/* {!props.history.location.pathname.endsWith("/recommendations") ? (
               <Link to={`/movies/${id}/recommendations`}>
@@ -59,10 +60,22 @@ const MovieDetailsPage = (props) => {
                 <Button>Hide</Button>
               </Link>
             )} */}
+            {!props.history.location.pathname.endsWith("/recommendations") ? (
+              <Link to={`/movies/${id}/recommendations`}>
+                <Button>
+                  Recommendations
+                </Button>
+              </Link>
+            ) : (
+              <Link
+                to={`/movies/${id}`}>
+                <Button>Hide</Button>
+              </Link>
+            )}
             {!props.history.location.pathname.endsWith("/similar") ? (
               <Link to={`/movies/${id}/similar`}>
                 <Button>
-                  Some Similar Movies
+                  Similar Movies
                 </Button>
               </Link>
             ) : (
@@ -86,9 +99,14 @@ const MovieDetailsPage = (props) => {
               </ButtonGroup>
             </Box>
             <Route
+              path={`/movies/:id/recommendations`}
+              render={props => <MovieRecommend movie={movie} {...props} />}
+            />
+            <Route
               path={`/movies/:id/similar`}
               render={props => <MovieSimilar movie={movie} {...props} />}
             />
+
             <Route
             path={`/movies/:id/cast`}
             render={props => <MovieCast movie={movie} {...props} />}

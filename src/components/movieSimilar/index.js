@@ -44,6 +44,10 @@ export default function MovieReviews({ movie }) {
               <TableCell component="th" scope="row">
                 {s.title}
               </TableCell>
+              
+        
+               
+              
               <TableCell >{excerpt(s.overview)}</TableCell>
               <TableCell >
                 <Link

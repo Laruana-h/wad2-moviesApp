@@ -8,6 +8,7 @@ import MovieList from "../movieList";
 const useStyles = makeStyles({
   root: {
     padding: "20px",
+    
   },
 });
 
