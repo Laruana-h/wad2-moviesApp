@@ -76,7 +76,7 @@ const handleSwitchChange = (e, props) => {
       </IconButton>
      
         
-          <FormControlLabel control={<Switch defaultChecked onChange={handleSwitchChange}/>} label="Sorted by popularity" />
+          <FormControlLabel control={<Switch color="primary" defaultChecked onChange={handleSwitchChange}/>} label="Sorting by popularity" />
       </CardContent>
       <CardMedia
         className={classes.media}

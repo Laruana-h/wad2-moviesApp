@@ -3,6 +3,15 @@ let people;    // List of movies from TMDB
 // Utility functions
 const filterByTitle = (personList, string) =>
     personList.filter((m) => m.name.toLowerCase().search(string) !== -1);
+    const sortByPopularity = (personList, isSwitchOn) => {
+        let sorted = isSwitchOn ?
+        personList.filter((m) => m.name.toLowerCase().search('') !== -1) :
+        personList
+          .filter((a) => {
+            return a.name.toLowerCase().search('') !== -1;
+          }).sort((a, b) => { return a.popularity - b.popularity })
+        return sorted;
+    };
 
 describe("Popular person", () => {
     before(() => {
@@ -75,6 +84,17 @@ describe("Popular person", () => {
             cy.get(".MuiCardHeader-content").contains(people[0].name);
         });
 
-    })
+    });
+    describe("Sort actors by popularity", () => {
+        it("should display actors with the popularity from low to high", () => {
+            cy.get(".MuiSwitch-root").click();
+            let isSwitchOn = false; //popularity from low to high
+            let matchingActors = sortByPopularity(people,isSwitchOn);
+            cy.get(".MuiCardHeader-content").should("have.length",matchingActors.length);
+            cy.get(".MuiCardHeader-content").each(($card, index) => {
+              cy.wrap($card).find("p").contains(matchingActors[index].name);
+            });
+        });
+    });
 
 })
