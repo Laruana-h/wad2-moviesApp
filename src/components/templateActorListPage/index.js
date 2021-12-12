@@ -15,15 +15,19 @@ function ActorListPageTemplate({ actors, title, action }) {
   const classes = useStyles();
   const [nameFilter, setNameFilter] = useState("");
   const [sortinFilter, setsortinFilter]=useState(false);
+  const [switchOn,setSwitchOn] = useState(true);
 //   const [genreFilter, setGenreFilter] = useState("0");
 //   const genreId = Number(genreFilter);
 
 
-  let displayedActors = actors
+  let displayedActors = switchOn?
+  actors
     .filter((a) => {
       return a.name.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
-    })
-
+    }):
+    actors.filter((a) => {
+      return a.name.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
+    }).sort((a, b) => { return a.popularity - b.popularity });
     // .filter((m) => {
     //   return genreId > 0 ? m.genre_ids.includes(genreId) : true;
     // });
@@ -36,12 +40,8 @@ function ActorListPageTemplate({ actors, title, action }) {
     else if(type==="DESC") {  
       setsortinFilter(true);
     
-
-      
-
-
     }
-  
+    else setSwitchOn(!switchOn);
     // else setGenreFilter(value);
   };
 
@@ -55,6 +55,7 @@ function ActorListPageTemplate({ actors, title, action }) {
           <FilterActorsCard
             onUserInput={handleChange}
             titleFilter={nameFilter}
+            onSwitchChange={handleChange}
             sortinFilter={sortinFilter}
             // genreFilter={genreFilter}
           />
