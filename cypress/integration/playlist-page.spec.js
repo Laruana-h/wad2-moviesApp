@@ -1,9 +1,14 @@
 let movies;    // List of movies from TMDB
 
-Cypress.Commands.add('errorEmailMessageType', (message) => {
+Cypress.Commands.add('errorType', (message) => {
     cy.get("#content").clear().type(message); 
     cy.get("button[type='submit']").eq(0).click();
     cy.get("p").contains("Review is too short");
+  })
+  Cypress.Commands.add('errorNameType', (message) => {
+    cy.get("#author").clear().type(message); 
+    cy.get("button[type='submit']").eq(0).click();
+    cy.get("p").contains("Name is too long");
   })
 
 describe("Playlist Page ", () => {
@@ -52,12 +57,19 @@ describe("Playlist Page ", () => {
             cy.get("p").contains("Author name required");
 
         });
-        it("should appears a prompt if you did enter the viewer less than 10 characters", () => {
+        it("should appears a prompt if you did enter the author name longer than 10 characters", () => {
+            cy.get("button[aria-label='write review']").eq(0).click();
+            cy.url().should("include", `/reviews/form`);
+            // let searchString = "m";
+            // cy.get("#author").clear().type(searchString); // Enter m in text box
+            cy.errorNameType("rrrr777777777") 
+        });
+        it("should appears a prompt if you did enter the review less than 10 characters", () => {
             cy.get("button[aria-label='write review']").eq(0).click();
             cy.url().should("include", `/reviews/form`);
             let searchString = "m";
             cy.get("#author").clear().type(searchString); // Enter m in text box
-            cy.errorEmailMessageType("rrrr") 
+            cy.errorType("rrrr") 
         });
         it("should enter author and contents which is longer than 10 character", () => {
             cy.get("button[aria-label='write review']").eq(0).click();
