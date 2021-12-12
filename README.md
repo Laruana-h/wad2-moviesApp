@@ -4,19 +4,37 @@ Name: SIJIE HE
 
 ## Overview.
 
-[A brief statement on the content of this repository.]
-
-
+A React app that uses the TMDB database to get movies and actors
 
 ### Features.
 [ A bullet-point list of the __new features__ you added to the Movies Fan app (and any modifications to existing features) .]
  
-+ Feature 1
+- Feature 1 - 10 new TMDB endpoints.
+
 + Feature 2
 + Feature 3
 + etc
 + etc
 
+#####  Overall Features,
+
+- Feature 1 - 10 new TMDB endpoints.
+
+- Feature 2 - 8 new views.
+
+- Feature 3 - Routing.(protected and public)
+
+- Feature 4 - Dynamic and interactive UI, Material UI.
+
+- Feature 5 - Web form.
+
+- Feature 6 - Extensive data hyperlinking.
+
+- Feature 7 - Storybook support.
+
+- Feature 8 - Styled Components 3rd party components.
+
+- Feature 9 - Fire base authentication 
 ## Setup requirements.
 
 [ Outline any non-standard setup steps necessary to run your app locally after cloning the repo.]

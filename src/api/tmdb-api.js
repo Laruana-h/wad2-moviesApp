@@ -1,4 +1,3 @@
-import axios from 'axios';
 
 export const getMovies = () => {
   return fetch(
@@ -82,7 +81,7 @@ export const getMovie = (args) => {
     )
       .then(res => res.json())
       .then(json => json.results);
-  };
+  };//new1
 
   export const getMovieSimilar = id => {
     return fetch(
@@ -90,7 +89,7 @@ export const getMovie = (args) => {
     )
       .then(res => res.json())
       .then(json => json.results);
-  };
+  };//new2
 
   export const getMovieCast = id => {
     return fetch(
@@ -98,7 +97,7 @@ export const getMovie = (args) => {
     )
     .then(res => res.json())
     .then(json => json.cast);
-}
+}//new3
 
 export const getPopularActor = () => {
   return fetch(
@@ -112,7 +111,7 @@ export const getPopularActor = () => {
   .catch((error) => {
      throw error
   });
-};
+};//new4
 
 export const getActor = (args) => {
   // console.log(args)
@@ -129,7 +128,7 @@ export const getActor = (args) => {
   .catch((error) => {
     throw error
  });
-};
+};//new5
 
 export const getActorImages = ({ queryKey }) => {
   const [, idPart] = queryKey;
@@ -146,7 +145,7 @@ export const getActorImages = ({ queryKey }) => {
   .catch((error) => {
     throw error
  });
-};
+};//new6
 
 export const getUpcomingMovies = () => {
   return fetch(
@@ -185,7 +184,7 @@ export const getTopRatedMovies = () => {
   })
   .catch((error) => {
      throw error
-  });
+  });//new7
 };
 export const getPopularMovies = () => {
   return fetch(
@@ -198,14 +197,14 @@ export const getPopularMovies = () => {
   })
   .catch((error) => {
      throw error
-  });
+  });//new8
 };
-export const fetchMovieVideo = async (id) => {
-  try {
-      const { data } = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`);
-      return data['results'][0];
-  } catch (error) { }
-}
+// export const fetchMovieVideo = async (id) => {
+//   try {
+//       const { data } = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`);
+//       return data['results'][0];
+//   } catch (error) { }
+// }
 
 export const searchTV = async ({query})=>{
   const url =`https://api.themoviedb.org/3/search/tv?api_key=e572f589327604d8519e6a2cbdc9836f&language=en-US&page=1&include_adult=false&query=${query}`;
@@ -240,10 +239,10 @@ export const searchTV = async ({query})=>{
         return await res.json()
       }
       return false;
-    }
+    }//new9
     
     export const getAccount = async () => {
       const res = await fetch("https://api.themoviedb.org/3/account?api_key=e572f589327604d8519e6a2cbdc9836f&session_id=" + localStorage.getItem("session"))
       return await res.json();
     }
-  
+  //new 10

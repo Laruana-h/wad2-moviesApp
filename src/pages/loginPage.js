@@ -4,7 +4,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import { makeStyles } from "@material-ui/core/styles";
 import img from '../images/IMG_1619.png';
 import Typography from "@material-ui/core/Typography";
-import { textInputs } from 'polished';
+
 const useStyles = makeStyles((theme) => ({
     media: { height: 80,width: 80,margin:125},
 }));
@@ -33,7 +33,7 @@ function Login() {
                             icon: 'error',
                             content: 'Wrong name or password!'
                         })
-                        Text.apply("h")
+                        
                         
                     } else {
                         const { session_id } = res;
@@ -47,7 +47,7 @@ function Login() {
                             content: "login Success!"
                         })
                         window.location.reload()
-                        window.location.href("homePage")
+                        window.location.href("homepage")
                     }
                 })
             }}>
