@@ -71,7 +71,7 @@ describe("Popular person", () => {
             cy.get("button[aria-label='add to liked']").eq(1).click();
             cy.get(".MuiCardHeader-avatar");
             cy.get("header").find(".MuiToolbar-root").find("button").eq(1).click();
-            cy.get("li").eq(3).click();
+            cy.get("li").eq(6).click();
             cy.get(".MuiCardHeader-content").contains(people[0].name);
         });
 

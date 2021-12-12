@@ -14,9 +14,12 @@ import { withRouter } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import MenuOpenIcon from '@material-ui/icons/MenuOpen';
-import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
+// import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import FaceRetouchingNaturalRoundedIcon from '@material-ui/icons/FaceRounded';
 import PageviewIcon from '@material-ui/icons/Pageview';
+import BoyIcon from '@material-ui/icons/FormatListBulleted';
+import BoysIcon from '@material-ui/icons/Group';
+import BooksIcon from '@material-ui/icons/ThumbUpAlt';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 const useStyles = makeStyles({
   list: {
@@ -65,6 +68,21 @@ export function TemporaryDrawer() {
            <Link to="/movies/playlist">Play List</Link>
            <ListItemText />
          </ListItem>
+         <ListItem>
+           <ListItemIcon><BoyIcon/> </ListItemIcon>
+           <Link to="/movies/nowplaying">Nowplaying</Link>
+           <ListItemText />
+         </ListItem>
+         <ListItem>
+           <ListItemIcon><BoysIcon/> </ListItemIcon>
+           <Link to="/movies/topRated">Toprated</Link>
+           <ListItemText />
+         </ListItem>
+         <ListItem>
+           <ListItemIcon><BooksIcon/> </ListItemIcon>
+           <Link to="/movies/popular">Popular</Link>
+           <ListItemText />
+         </ListItem>
       </List>
      
       <Divider/>
@@ -84,11 +102,11 @@ export function TemporaryDrawer() {
       </List>
       <Divider/>
       <List>
-         <ListItem>
+         {/* <ListItem>
            <ListItemIcon><HomeRoundedIcon/></ListItemIcon>
            <Link to="/login">Login</Link>
            <ListItemText />
-         </ListItem>
+         </ListItem> */}
       </List>
       <List>
          <ListItem>

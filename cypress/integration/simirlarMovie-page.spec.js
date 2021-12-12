@@ -72,20 +72,21 @@ describe("Similar Page", () => {
         cy.get("th").eq(0).contains("Name");
         cy.get("th").eq(1).contains("Overview");
         cy.get("th").eq(2).contains("More");
+        // cy.get("button[id='hide']").click();
+        // cy.url().should("not.include", `/similar`);
         // const genreChips = similar.overview.map((g) => g.name);
-
         // cy.get("td").each(($card, index) => {
         //   cy.wrap($card).contains(genreChips[index]);
         // });
         // cy.get('tr').find(`td:contains(${similar.overview})`);
-        
     });
-    // it("should display the movie's posters", () => {
-    //     cy.get('tr').find(`td:contains(${author})`).should('have.length', 1)
-    //     // cy.get("tr").eq(0).contains(`${similar[0].id}`);
-    //     // cy.url().should("include", `/movies/${similar[0].id}`);
+    it("should hide the similar information", () => {
+      cy.get("button[id='hide']").click();
+      cy.url().should("not.include", `/similar`);
+        // cy.get("tr").eq(0).contains(`${similar[0].id}`);
+        // cy.url().should("include", `/movies/${similar[0].id}`);
 
-    // });
+    });
 
 })
 });

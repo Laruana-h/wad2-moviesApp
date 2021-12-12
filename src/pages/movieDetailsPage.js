@@ -81,7 +81,7 @@ const MovieDetailsPage = (props) => {
             ) : (
               <Link
                 to={`/movies/${id}`}>
-                <Button>Hide</Button>
+                <Button id ="hide">Hide</Button>
               </Link>
             )}
             {!props.history.location.pathname.endsWith("/cast") ? (

@@ -35,7 +35,7 @@ describe("Home Page ", () => {
         cy.get("h1").contains("Filter the movies");
       });
     });
-    describe("Meun Bar test", () => {
+    describe("Meun List test", () => {
       it("displays favourite page", () => {
           cy.get("header").find(".MuiToolbar-root").find("button").eq(1).click();
           cy.get("li").eq(0).click();
@@ -43,7 +43,7 @@ describe("Home Page ", () => {
       });
       it("displays actor page", () => {
         cy.get("header").find(".MuiToolbar-root").find("button").eq(1).click();
-        cy.get("li").eq(2).click();
+        cy.get("li").eq(5).click();
         cy.url().should("include", `/actors`);
     });
     });

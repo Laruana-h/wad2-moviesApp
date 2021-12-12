@@ -99,6 +99,7 @@ const ReviewForm = ({ movie, history }) => {
     context.addReview(movie, review);
     setOpen(true);   // NEW
   };
+  
 
   return (
     <Box component="div" className={classes.root}
@@ -136,7 +137,9 @@ const ReviewForm = ({ movie, history }) => {
           label="Author's name"
           name="author"
           autoFocus
-          inputRef={register({ required: "Author name required" })}
+          
+          inputRef={register({ required: "Author name required" ,
+          maxLength: { value: 10, message: "Name is too long" },})}
         />
         {errors.author && (
           <Typography variant="h6" component="p">

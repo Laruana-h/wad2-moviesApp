@@ -32,9 +32,9 @@ const SiteHeader = ( { history }) => {
     { label: "Homepage", path: "/" },
     { label: "Upcoming", path: "/movies/upcoming" }, 
     { label: "Watchlist", path: "/movies/playlist" },
-    { label: "Nowplaying", path: "/movies/nowplaying" },
-    { label: "Toprated", path: "/movies/topRated" },
-    { label: "Popular", path: "/movies/popular" },
+    // { label: "Nowplaying", path: "/movies/nowplaying" },
+    // { label: "Toprated", path: "/movies/topRated" },
+    // { label: "Popular", path: "/movies/popular" },
     
     { label: localStorage.getItem('session')?"Logout":"Login", path: "/login" },
   ];
