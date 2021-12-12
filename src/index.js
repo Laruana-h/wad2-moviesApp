@@ -1,30 +1,49 @@
-import AddMovieReviewPage from './pages/addMovieReviewPage'
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
-import HomePage from "./pages/homePage";
-import MoviePage from "./pages/movieDetailsPage";
-import ActorPage from "./pages/actorDetailsPage";
-import FavoriteMoviesPage from "./pages/favoriteMoviesPage";
-import MovieReviewPage from "./pages/movieReviewPage";
-import NowplayingPage from './pages/nowplayingPage';
-import SiteHeader from './components/siteHeader';
-import TopRatedPage from "./pages/topRatedPage";
-import UpcomingMoviesPage from "./pages/UpcomingMoviesPage";
-import PopularMoviePage from "./pages/popularMoviesPage";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools'
 import MoviesContextProvider from "./contexts/moviesContext";
-import playlistMoivePage from "./pages/playlistMoivePage";
-import ActorsHomePage from "./pages/actorsHomepage";
-import LikedActorsPage from "./pages/likedActorsPage";
-// import ActorsContextProvider from "./contexts/actorsContext";
-import Login from "./pages/loginPage";
-import TV from "./pages/searchTVpage";
+
+// import HomePage from "./pages/homePage";
+// import MoviePage from "./pages/movieDetailsPage";
+// import ActorPage from "./pages/actorDetailsPage";
+// import FavoriteMoviesPage from "./pages/favoriteMoviesPage";
+// import MovieReviewPage from "./pages/movieReviewPage";
+// import NowplayingPage from "./pages/nowplayingPage";
+// import SiteHeader from './components/siteHeader';
+// import TopRatedPage from "./pages/topRatedPage";
+// import UpcomingMoviesPage from "./pages/UpcomingMoviesPage";
+// import PopularMoviePage from "./pages/popularMoviesPage";
+// import playlistMoivePage from "./pages/playlistMoivePage";
+// import ActorsHomePage from "./pages/actorsHomepage";
+// import LikedActorsPage from "./pages/likedActorsPage";
+// import Login from "./pages/loginPage";
+// import TV from "./pages/searchTVpage";
+// import AddMovieReviewPage from './pages/addMovieReviewPage'
 
 import { FirebaseAppProvider } from 'reactfire';
 import firebaseConfig from './firebase/firebaseConfig';
 import { useFirebaseApp } from 'reactfire';
+
+const HomePage           = lazy(() => import("./pages/homePage"));
+const MoviePage          = lazy(() => import("./pages/movieDetailsPage"));
+const ActorPage          = lazy(() => import("./pages/actorDetailsPage"));
+const FavoriteMoviesPage = lazy(() => import("./pages/favoriteMoviesPage"));
+const MovieReviewPage    = lazy(() => import("./pages/movieReviewPage"));
+const NowplayingPage     = lazy(() => import("./pages/nowplayingPage"));
+const SiteHeader         = lazy(() => import('./components/siteHeader'));
+const TopRatedPage       = lazy(() => import("./pages/topRatedPage"));
+const UpcomingMoviesPage = lazy(() => import("./pages/UpcomingMoviesPage"));
+const PopularMoviePage   = lazy(() => import("./pages/popularMoviesPage"));
+const playlistMoivePage  = lazy(() => import("./pages/playlistMoivePage"));
+const ActorsHomePage     = lazy(() => import("./pages/actorsHomepage"));
+const LikedActorsPage    = lazy(() => import("./pages/likedActorsPage"));
+const Login              = lazy(() => import("./pages/loginPage"));
+const TV                 = lazy(() => import("./pages/searchTVpage"));
+const AddMovieReviewPage = lazy(() => import('./pages/addMovieReviewPage'));
+
+
 // import Login from './firebase/Login';
 
 
