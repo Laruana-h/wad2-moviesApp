@@ -19,6 +19,7 @@ A React app that uses the TMDB database to get movies and actors
 + Feature 7 - Storybook support.
 + Feature 8 - Web Form (reviews, log in).
 + Feature 9 - Styled Components 3rd party components.
++ Feature 10 - Full Caching support.
 
  ##### Details,
 
@@ -41,7 +42,9 @@ A React app that uses the TMDB database to get movies and actors
 
 ## Setup requirements.
 
+```
 npm install
+```
 
 If you make any change 
 
@@ -105,35 +108,89 @@ npm run analyze
 >We can also enter the name of the actor you want to search in the input box, and select the sort status
 ![ ](./images/sortDECR.png)
 
->
-![ ](./)
+>We can also click on the button below each actor's profile card, and an Avatar will appear on top of the card.
+![ ](./images/actorcard.jpeg)
 
->
-![ ](./)
+>Let's go to the Liked Actor interface and see the actor we just added
+![ ](./images/like.png)
 
->
-![ ](./)
-![ ](./)
-![ ](./)
-![ ](./)
+>Click MORE INFO below the actor profile card to view the details of the actor
+![ ](./images/actordetails.png)
 
->Shows detailed information on a movie. Clicking the 'Reviews' floating action button will display extracts from critic reviews.
+>When I saw the new Movie Detail interface, I added a BUTTON GROUP under the detail,contain the links to the similar movies , recommentation movie, new function - see the related cast
+![ ](./images/moviedetail.png)
+![ ](./images/buttonGroup.jpg)
+
+>Click different buttons below to jump to different interfaces
+![ ](./images/similar.png)
+![ ](./images/recommend.png)
+![ ](./images/cast.png)
+
+>Click the Full Details button to jump to the appropriate page
+![ ](./images/recommendbutton.jpg)
+
+>Click the Actor Profile button to jump to the appropriate actor profile page
+![ ](./images/returnactor.png)
+
+>Display the SearchTV page, enter the name of the TV in this input box to display the poster for the TV
+![ ](./images/searchTV.jpg)
+
+>On the movie review page, there is verification for the user name and length of content when we write the evaluation, so it cannot be submitted if it does not meet the requirements. At the bottom of the page, I also added a rating component
+![ ](./images/review.jpg)
+
+>Enter the film review that meets the requirements, you can successfully submit
+![ ](./images/reviews.png)
+
+>I also used the third-party verification, and I got the account information in TMDB, so I could log in using my TMDB account
+![ ](./images/loginsuccess.png)
+
+>When the account or password is incorrect, it will prompt an error message
+![ ](./images/loginerror.png)
+
+>We can also view popular movies on the website in TMDB data
+![ ](./images/popular.png)
+
+>Full caching support by using useQuery.
+![ ](./images/useQuery.png)
 
 ### Routing.
 
 [ List the __new routes__ supported by your app and state the associated page.]
 
-+ /blogs - displays all published blogs.
-+ /blogs/:id - displays a particular blog.
-+ /blogs/:id/comments - detail view of a particular blog and its comments.
-+ etc.
++ / - displays discover movies.
++ /movies/:id - displays detailed information page of a movie.
++ /movies/:id/credits - display credits of a movie.
++ /movies/:id/similar - display similar movies of a movie.
++ /movies/:id/recommendations - display recommended movies of a movie.
++ /movies/topRated - display top rated movies list.
++ /movies/popular - display popular movies list.
++ /movies/nowPlaying - display now playing movies list.
++ /movies/upcoming - display upcoming movies list.
++ /movies/favorites - display movies added in the favorites list.
++ /movies/playlist - display movies added in the playlist.
 
-[If relevant, state what aspects of your app are protected (i.e. require authentication) and what is public.]
++ /reviews/form - display form to add a new review.
++ /reviews/:id - to get a list of reviews of a movie.
+
++ /actors - display the actors list page.
++ /actors/:id - display detailed information of an actor.
++ /actors/like - (protected) display the liked actors list aftering logging in.
+
++ /login - (require authtication) display log in page.
++ /tv - display search tv page
 
 ## Independent learning (If relevant).
 
 [ Itemize the technologies/techniques you researched independently and adopted in your project, i.e. aspects not covered in the lectures/labs. Include the source code filenames that illustrate these (we do not require code excerpts) and provide references to the online resources that helped you (articles/blogs).
 
++ I search the information about how to generate a session from TMDB.The basics to getting a user authenticated include:
+    + Create a new 
+    + Get the user to authorize the request token
+    + Create a new  with the athorized request token
+
++ the links are below:
+    + https://developers.themoviedb.org/3/authentication/how-do-i-generate-a-session-id
+    + https://download.csdn.net/download/weixin_42119989/16598548
 
 -------------------------------------------
 # Assignment 1 - Agile Software Practice.
@@ -161,8 +218,8 @@ e.g.
 
 [Show a screenshot of the 'build/static/js' folder of your project]
 
-![](images/build.png)
-
+![](images/build1.png)
+![](images/build2.png)
 ## Independent learning (If relevant).
 
 [State which aspect of the Outstanding grading spectrum you addresses. Include relevant screenshots and links to services used, e.g. Percy project, Deployed app
