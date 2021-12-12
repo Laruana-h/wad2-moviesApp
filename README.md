@@ -195,24 +195,51 @@ npm run analyze
 -------------------------------------------
 # Assignment 1 - Agile Software Practice.
 
+### Features.
+
 ## Automated Testing.
 
+    Unique SPA features.  
+    Error/Exception testing.  
+    Test case structure (nesting).   
+    >Cypress Custom commands.   
+    ![ ](./images/cypress.png)
+
+##  Continuous Integration:   
+    GitLab CI.    
+    ![ ](./images/gitlab.png)
+    Pipeline - Install, Build, and Test jobs.   
+    Branching policy.   
+## Bundling/Code splitting:    
+    Webpack (React-scripts)
+    ![ ](./images/analyse.png)
+
+## Source control:   
+    Log history.   
+    Branch-Edit-Merge workflow.   
+    Pull requests.   
+    ![ ](./images/pull.png)
 ### Best test cases.
 
 [ List the top 4/5 test cases ('it' blocks), in your opinion, from your test suite that best demonstrate your competency in writing Cypress test code. Specify the test file name and the starting line number of the 'it' block, 
 
-e.g.
-+ cypress/integration/mustWatch-movies-page.spec.js - line 24
-+ cypress/integration/actor-bio-page.spec.js - line 32
-+ etc
++ cypress/integration/navigation.spec.js - line 87
++ cypress/integration/playlist-page.spec.js - line 43
++ cypress/integration/actors-page.spec.js - line 88
++ cypress/integration/playlist-page.spec.js - line 51
 
 ### Cypress Custom commands (if relevant).
 
 [Specify the test file(s) that contain custom Cypress command implementations.]
 
-e.g.
+
 + cypress/integration/mustWatch-novies-page.spec.js
 + cypress/integration/actor-bio-page.spec.js
+
+
+### Cypress Custom commands (if relevant).
++ cypress/integration/playlist-page.spec.js - line 3
++ cypress/integration/playlist-page.spec.js - line 4
 
 ## Code Splitting.
 
@@ -220,6 +247,3 @@ e.g.
 
 ![](images/build1.png)
 ![](images/build2.png)
-## Independent learning (If relevant).
-
-[State which aspect of the Outstanding grading spectrum you addresses. Include relevant screenshots and links to services used, e.g. Percy project, Deployed app
