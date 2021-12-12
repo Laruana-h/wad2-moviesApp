@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, {lazy, Suspense} from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
@@ -53,7 +53,9 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
+      <Suspense fallback={<h1> Loading component </h1>} >
         <SiteHeader />
+
       
         <MoviesContextProvider>
           {" "}
@@ -82,7 +84,7 @@ const App = () => {
             <Redirect from="*" to="/" />
           </Switch>
         </MoviesContextProvider>
-
+        </Suspense>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
