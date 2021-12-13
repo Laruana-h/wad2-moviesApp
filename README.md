@@ -202,23 +202,27 @@ npm run analyze
     Unique SPA features.  
     Error/Exception testing.  
     Test case structure (nesting).   
-    >Cypress Custom commands.   
-    ![ ](./images/cypress.png)
 
-##  Continuous Integration:   
-    GitLab CI.    
-    ![ ](./images/gitlab.png)
+>Cypress Custom commands.   
+![ ](images/cypress.png)
+
+##  Continuous Integration:  
+
+>GitLab CI.    
+![ ](images/gitlab.png)
+
     Pipeline - Install, Build, and Test jobs.   
     Branching policy.   
-## Bundling/Code splitting:    
-    Webpack (React-scripts)
-    ![ ](./images/analyse.png)
+## Bundling/Code splitting:   
+
+>Webpack (React-scripts)
+![ ](images/analyse.png)
 
 ## Source control:   
     Log history.   
     Branch-Edit-Merge workflow.   
-    Pull requests.   
-    ![ ](./images/pull.png)
+>Pull requests.   
+![ ](images/pull.png)
 ### Best test cases.
 
 [ List the top 4/5 test cases ('it' blocks), in your opinion, from your test suite that best demonstrate your competency in writing Cypress test code. Specify the test file name and the starting line number of the 'it' block, 
@@ -228,14 +232,6 @@ npm run analyze
 + cypress/integration/actors-page.spec.js - line 88
 + cypress/integration/playlist-page.spec.js - line 51
 
-### Cypress Custom commands (if relevant).
-
-[Specify the test file(s) that contain custom Cypress command implementations.]
-
-
-+ cypress/integration/mustWatch-novies-page.spec.js
-+ cypress/integration/actor-bio-page.spec.js
-
 
 ### Cypress Custom commands (if relevant).
 + cypress/integration/playlist-page.spec.js - line 3
@@ -244,6 +240,7 @@ npm run analyze
 ## Code Splitting.
 
 [Show a screenshot of the 'build/static/js' folder of your project]
+
 
 ![](images/build1.png)
 ![](images/build2.png)
