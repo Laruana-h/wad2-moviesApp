@@ -14,7 +14,7 @@ import { withRouter } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import MenuOpenIcon from '@material-ui/icons/MenuOpen';
-// import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
+import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import FaceRetouchingNaturalRoundedIcon from '@material-ui/icons/FaceRounded';
 import PageviewIcon from '@material-ui/icons/Pageview';
 import BoyIcon from '@material-ui/icons/FormatListBulleted';
@@ -102,16 +102,21 @@ export function TemporaryDrawer() {
       </List>
       <Divider/>
       <List>
-         {/* <ListItem>
-           <ListItemIcon><HomeRoundedIcon/></ListItemIcon>
-           <Link to="/login">Login</Link>
-           <ListItemText />
-         </ListItem> */}
-      </List>
-      <List>
          <ListItem>
            <ListItemIcon><PageviewIcon/></ListItemIcon>
            <Link to="/tv">Search TV</Link>
+           <ListItemText />
+         </ListItem>
+      </List>
+      <List>
+         <ListItem>
+           <ListItemIcon><HomeRoundedIcon/> </ListItemIcon>
+           <Link to="/movies/login">Login</Link>
+           <ListItemText />
+         </ListItem>
+         <ListItem>
+           <ListItemIcon><HomeRoundedIcon/> </ListItemIcon>
+           <Link to="/signup">Signup</Link>
            <ListItemText />
          </ListItem>
       </List>

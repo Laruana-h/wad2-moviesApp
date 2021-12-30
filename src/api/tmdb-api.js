@@ -212,37 +212,58 @@ export const searchTV = async ({query})=>{
   return await res.json();
 }
 
-    export const login = async (user) => {
-      let res = await fetch(`https://api.themoviedb.org/3/authentication/token/new?api_key=${process.env.REACT_APP_TMDB_KEY}`);
-      let { request_token } = await res.json();
-      res = await fetch('https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key=e572f589327604d8519e6a2cbdc9836f', {
-        method: "post",
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8'
-        },
-        body: JSON.stringify({
-          ...user,
-          request_token
-        })
-      });
-      res = await res.json();
-      if (res.success) {
-        res = await fetch("https://api.themoviedb.org/3/authentication/session/new?api_key=e572f589327604d8519e6a2cbdc9836f", {
-          method: "post",
-          headers: {
-            'Content-Type': 'application/json;charset=UTF-8'
-          },
-          body: JSON.stringify({
-            request_token: res.request_token
-          })
-        })
-        return await res.json()
-      }
-      return false;
-    }//new9
+    // export const login = async (user) => {
+    //   let res = await fetch(`https://api.themoviedb.org/3/authentication/token/new?api_key=${process.env.REACT_APP_TMDB_KEY}`);
+    //   let { request_token } = await res.json();
+    //   res = await fetch('https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key=e572f589327604d8519e6a2cbdc9836f', {
+    //     method: "post",
+    //     headers: {
+    //       'Content-Type': 'application/json;charset=UTF-8'
+    //     },
+    //     body: JSON.stringify({
+    //       ...user,
+    //       request_token
+    //     })
+    //   });
+    //   res = await res.json();
+    //   if (res.success) {
+    //     res = await fetch("https://api.themoviedb.org/3/authentication/session/new?api_key=e572f589327604d8519e6a2cbdc9836f", {
+    //       method: "post",
+    //       headers: {
+    //         'Content-Type': 'application/json;charset=UTF-8'
+    //       },
+    //       body: JSON.stringify({
+    //         request_token: res.request_token
+    //       })
+    //     })
+    //     return await res.json()
+    //   }
+    //   return false;
+    // }//new9
     
     export const getAccount = async () => {
       const res = await fetch("https://api.themoviedb.org/3/account?api_key=e572f589327604d8519e6a2cbdc9836f&session_id=" + localStorage.getItem("session"))
       return await res.json();
     }
   //new 10
+
+
+  export const login = (username, password) => {
+    return fetch('/api/users', {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: 'post',
+        body: JSON.stringify({ username: username, password: password })
+    }).then(res => res.json())
+};
+
+export const signup = (username, password) => {
+    return fetch('/api/users?action=register', {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: 'post',
+        body: JSON.stringify({ username: username, password: password })
+    }).then(res => res.json())
+};

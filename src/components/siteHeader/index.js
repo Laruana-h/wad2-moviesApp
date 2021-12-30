@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -13,7 +13,7 @@ import { withRouter } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { TemporaryDrawer } from "../nav";
-
+import { AuthContext } from "../../contexts/authContext";
 const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
@@ -21,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
   offset: theme.mixins.toolbar,
 }));
 
-const SiteHeader = ( { history }) => {
+const SiteHeader = ({ history }) => {
+  const context = useContext(AuthContext);
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -30,13 +31,13 @@ const SiteHeader = ( { history }) => {
 
   const menuOptions = [
     { label: "Homepage", path: "/" },
-    { label: "Upcoming", path: "/movies/upcoming" }, 
+    { label: "Upcoming", path: "/movies/upcoming" },
     { label: "Watchlist", path: "/movies/playlist" },
     // { label: "Nowplaying", path: "/movies/nowplaying" },
     // { label: "Toprated", path: "/movies/topRated" },
     // { label: "Popular", path: "/movies/popular" },
-    
-    { label: localStorage.getItem('session')?"Logout":"Login", path: "/login" },
+
+    { label: localStorage.getItem('session') ? "Logout" : "Login", path: "/login" },
   ];
 
 
@@ -49,6 +50,7 @@ const SiteHeader = ( { history }) => {
     setAnchorEl(event.currentTarget);
   };
 
+
   return (
     <>
       <AppBar position="fixed" color="primary">
@@ -56,44 +58,57 @@ const SiteHeader = ( { history }) => {
           <Typography variant="h4" className={classes.title}>
             TMDB Client
           </Typography>
-          <TemporaryDrawer/>
-      <nav className={classes.title}></nav>
+          <TemporaryDrawer />
+          <nav className={classes.title}></nav>
           <Typography variant="h6" className={classes.title}>
-            All you ever wanted to know about Movies!
+            {
+              context.isAuthenticated ? (
+                <p>
+                  Welcome {context.userName}!   All you ever wanted to know about Movies!
+                  <Button onClick={() => context.signout()}>Sign out</Button>
+                </p>
+              ) : (
+                <p>
+                  You are not logged in{" "}
+                  <Button onClick={() => history.push("/movies/login")}>Login</Button>
+                </p>
+              )
+            }
+
           </Typography>
-            {isMobile ? (
-              <>
-                <IconButton
-                  aria-label="menu"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={handleMenu}
-                  color="inherit"
-                >
-                  <MenuIcon />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
+          {isMobile ? (
+            <>
+              <IconButton
+                aria-label="menu"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
 
 
-                  open={open}
-                  onClose={() => setAnchorEl(null)}
-                >
-                  {menuOptions.map((opt) => (
-                    <MenuItem
+                open={open}
+                onClose={() => setAnchorEl(null)}
+              >
+                {menuOptions.map((opt) => (
+                  <MenuItem
                     key={opt.label}
                     onClick={() => {
-                      if(opt.label==='Logout'){
+                      if (opt.label === 'Logout') {
                         window.location.reload()
                         localStorage.removeItem("session")
                       }
@@ -103,29 +118,29 @@ const SiteHeader = ( { history }) => {
                     {opt.label}
                   </MenuItem>
 
-                  ))}
-                </Menu>
-              </>
-            ) : (
-              <>
-                {menuOptions.map((opt) => (
-                  <Button
-                    key={opt.label}
-                    color="inherit"
-                    onClick={() => {
-                      if(opt.label==='Logout'){
-                        window.location.reload()
-                        localStorage.removeItem("session")
-                      }
-                      handleMenuSelect(opt.path)
-                    }}
-                  >
-
-                    {opt.label}
-                  </Button>
                 ))}
-              </>
-            )}
+              </Menu>
+            </>
+          ) : (
+            <>
+              {menuOptions.map((opt) => (
+                <Button
+                  key={opt.label}
+                  color="inherit"
+                  onClick={() => {
+                    if (opt.label === 'Logout') {
+                      window.location.reload()
+                      localStorage.removeItem("session")
+                    }
+                    handleMenuSelect(opt.path)
+                  }}
+                >
+
+                  {opt.label}
+                </Button>
+              ))}
+            </>
+          )}
         </Toolbar>
       </AppBar>
       <div className={classes.offset} />

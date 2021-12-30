@@ -4,7 +4,8 @@ import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools'
 import MoviesContextProvider from "./contexts/moviesContext";
-
+import PrivateRoute from "./route/privateRoute";
+import AuthProvider from "./contexts/authContext";
 // import HomePage from "./pages/homePage";
 // import MoviePage from "./pages/movieDetailsPage";
 // import ActorPage from "./pages/actorDetailsPage";
@@ -42,7 +43,8 @@ const LikedActorsPage    = lazy(() => import("./pages/likedActorsPage"));
 const Login              = lazy(() => import("./pages/loginPage"));
 const TV                 = lazy(() => import("./pages/searchTVpage"));
 const AddMovieReviewPage = lazy(() => import('./pages/addMovieReviewPage'));
-
+const login              = lazy(() => import('./pages/login'));
+const signup             = lazy(() => import('./pages/signup'));
 
 // import Login from './firebase/Login';
 
@@ -54,14 +56,17 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
       <Suspense fallback={<h1> Loading component </h1>} >
-        <SiteHeader />
 
       
         <MoviesContextProvider>
           {" "}
+  
+          <AuthProvider>
+          <SiteHeader />
           <Switch>
           <Route exact path="/tv" component={TV} />
-          <Route exact path="/movies/login" component={Login} />
+          <Route exact path="/movies/login" component={login} />
+          <Route exact path="/signup" component={signup} />
             <Route exact path="/movies/popular" component={PopularMoviePage} />
             <Route exact path="/movies/topRated" component={TopRatedPage} />
             <Route exact path="/movies/nowplaying" component={NowplayingPage} />
@@ -75,14 +80,18 @@ const App = () => {
             <Route path="/movies/:id" component={MoviePage} />
 
             <Route exact path="/login" component={Login} />
-            <Route exact path="/actors/liked" component={LikedActorsPage} />
-            <Route exact path="/actors/:id" component={ActorPage} />
-            <Route exact path="/actors" component={ActorsHomePage} />
+            
+            <Route exact path="/movies/login" component={login} />
+            <Route exact path="/movies/signup" component={signup} />
+            <PrivateRoute exact path="/actors/liked" component={LikedActorsPage} />
+            <PrivateRoute exact path="/actors/:id" component={ActorPage} />
+            <PrivateRoute exact path="/actors" component={ActorsHomePage} />
 
             <Route exact path="/" component={HomePage} />
             
             <Redirect from="*" to="/" />
           </Switch>
+          </AuthProvider>
         </MoviesContextProvider>
         </Suspense>
       </BrowserRouter>
