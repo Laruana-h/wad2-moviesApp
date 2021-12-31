@@ -56,22 +56,20 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
       <Suspense fallback={<h1> Loading component </h1>} >
-
-      
+      <AuthProvider>
+      <SiteHeader />
         <MoviesContextProvider>
           {" "}
   
-          <AuthProvider>
-          <SiteHeader />
           <Switch>
-          <Route exact path="/tv" component={TV} />
-          <Route exact path="/movies/login" component={login} />
-          <Route exact path="/signup" component={signup} />
+            <Route exact path="/tv" component={TV} />
+            <Route exact path="/movies/login" component={login} />
+            <Route exact path="/signup" component={signup} />
             <Route exact path="/movies/popular" component={PopularMoviePage} />
             <Route exact path="/movies/topRated" component={TopRatedPage} />
-            <Route exact path="/movies/nowplaying" component={NowplayingPage} />
+            <PrivateRoute exact path="/movies/nowplaying" component={NowplayingPage} />
             <Route exact path="/movies/playlist" component={playlistMoivePage} />
-            <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
+            <PrivateRoute exact path="/movies/upcoming" component={UpcomingMoviesPage} />
             <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
 
             <Route exact path="/reviews/form" component={AddMovieReviewPage} />
@@ -87,12 +85,13 @@ const App = () => {
             <PrivateRoute exact path="/actors/:id" component={ActorPage} />
             <PrivateRoute exact path="/actors" component={ActorsHomePage} />
 
-            <Route exact path="/" component={HomePage} />
+            <PrivateRoute exact path="/" component={HomePage} />
             
             <Redirect from="*" to="/" />
           </Switch>
-          </AuthProvider>
+         
         </MoviesContextProvider>
+        </AuthProvider>
         </Suspense>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />

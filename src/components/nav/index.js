@@ -21,6 +21,7 @@ import BoyIcon from '@material-ui/icons/FormatListBulleted';
 import BoysIcon from '@material-ui/icons/Group';
 import BooksIcon from '@material-ui/icons/ThumbUpAlt';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
+import AppRegistrationIcon from '@material-ui/icons/HowToReg';
 const useStyles = makeStyles({
   list: {
     width: 250
@@ -108,6 +109,7 @@ export function TemporaryDrawer() {
            <ListItemText />
          </ListItem>
       </List>
+      <Divider/>
       <List>
          <ListItem>
            <ListItemIcon><HomeRoundedIcon/> </ListItemIcon>
@@ -115,7 +117,7 @@ export function TemporaryDrawer() {
            <ListItemText />
          </ListItem>
          <ListItem>
-           <ListItemIcon><HomeRoundedIcon/> </ListItemIcon>
+           <ListItemIcon><AppRegistrationIcon/> </ListItemIcon>
            <Link to="/signup">Signup</Link>
            <ListItemText />
          </ListItem>
