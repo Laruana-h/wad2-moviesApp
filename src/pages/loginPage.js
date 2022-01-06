@@ -1,5 +1,5 @@
 import {Button,Form,Input,Toast} from 'antd-mobile';
-import { getAccount, login } from '../api/tmdb-api'
+import { getAccount, loginpage } from '../api/tmdb-api'
 import CardMedia from "@material-ui/core/CardMedia";
 import { makeStyles } from "@material-ui/core/styles";
 import img from '../images/IMG_1619.png';
@@ -27,7 +27,7 @@ function Login() {
                 "username": "",
                 "password": ""
             }} onFinish={(values) => {
-                login(values).then(res => {
+                loginpage(values).then(res => {
                     if (!res) {
                         Toast.show({
                             icon: 'error',
